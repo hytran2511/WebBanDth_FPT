@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - WebBanDienThoai</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container">
+        <!-- Grey with black text -->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">PHONE STORE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">SERVICES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CONTRACT</a>
+                </li>
+            </ul>
+
+            <div class="ml-auto">
+                @Html.Action("CartPartial", "Cart")
+            </div>
+
+            <ul class="navbar-nav ml-auto" style="margin-left: auto;">
+                @if (Session["Account"] != null)
+                {
+                    var account = (WebBanDth_FPT.Models.Customer)Session["Account"];
+                    <li class="nav-item">
+                        <a class="nav-link text-warning" href="#">Xin chào, @account.FullName</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Logout", "Customer")">Đăng xuất</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Register", "Customer")">Đăng ký</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Login", "Customer")">Đăng nhập</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+        <br />
+        <div>
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.Action("GetCategories", "PhoneStore")
+                </div>
+                <div class="col-md-9">
+                    <img style="width:50%; height=30%;" src="~/Images/images/banner.jpg" />
+                    <div style="color:red; text-align:center; margin:15px 0;">
+                        Điện thoại chính hãng, giá rẻ, bảo hành 12 tháng, giao hàng toàn quốc. Hỗ trợ trả góp 0% lãi suất. Mua ngay!
+                    </div>
+                    @RenderBody()
+                    <br />
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

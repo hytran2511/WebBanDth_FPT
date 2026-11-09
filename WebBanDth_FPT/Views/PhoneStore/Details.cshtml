@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin chi tiết của </h2>
+<br />
+<h2> @Model.ProductName </h2>
+<a href="@Url.Action("AddToCart", "Cart", new { id = Model.ProductId, strURL = Request.Url.ToString() })" class="btn btn-success">
+    Thêm vào giỏ hàng
+</a>

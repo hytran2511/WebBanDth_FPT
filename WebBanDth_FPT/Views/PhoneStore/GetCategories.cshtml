@@ -1,0 +1,13 @@
+﻿@using WebBanDth_FPT.Models
+@model IEnumerable<Category>
+<div class="title">Hãng Điện Thoại</div>
+<ul class="list-group">
+    @foreach (var category in Model)
+    {
+        <!-- Đổi tên Action ở đây -->
+        <a href="@Url.Action("GetProductsByCategory", "PhoneStore", new { id = category.CategoryId })"
+           class="list-group-item list-group-item-action">
+            @category.CategoryName
+        </a>
+    }
+</ul>

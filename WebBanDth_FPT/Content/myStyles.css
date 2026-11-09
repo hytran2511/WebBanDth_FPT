@@ -1,0 +1,17 @@
+﻿.title {
+    margin: 20px 0;
+    color: red;
+}
+
+.book-section {
+    text-align: center;
+    border: none;
+}
+
+.book-picture {
+    height: 60%;
+}
+
+.book-picture {
+    height: 100%;
+}
